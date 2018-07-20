@@ -1,0 +1,7 @@
+本周 学习了HTML CSS JS 基本操作用法都掌握了
+HTML：标签div img h p span ul ol li 
+CSS:怎样创建CSS 、CSS里的样式（字体 颜色 链接等）、盒子模型 （内边距 外边距 边框）、定位（绝对定位、相对定位、fixed定位）、浮动、flex布局
+JS：将静态的HTML页面转换成动态的页面  
+react框架 已经了解了它的作用 
+
+dialog层的显示
