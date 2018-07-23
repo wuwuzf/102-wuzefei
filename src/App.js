@@ -1,80 +1,125 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import TopView from './components/container/top';
+import MessageItem from './components/MessageItem.js';
+import DialogView from './components/DialogView.js';
 import './App.css';
-//import buttonView from './button';
-import MessageItemView from './MessageItem';
+import { DIALOG_SHOW_STATUS } from './const';
 
-const icon0 = require("./img/a.jpg");
-const icon1 = require("./img/b.jpg");
-const icon2 = require("./img/c.jpg");
-const icon3 = require("./img/d.jpg");
-const icon4 = require("./img/e.jpg");
-const icon5 = require("./img/f.jpg");
-const icon6 = require("./img/g.jpg");
-const icon7 = require("./img/h.jpg");
-const icon8 = require("./img/i.jpg");
+ const icon = require('./resource/icon.png');
 
 
-class App extends Component {
+
+class App extends React.Component {
+
+  constructor(props){
+    super(props);
+
+    
+      
+   
+    this.state = {
+      messages: [
+        {
+          icon: icon,
+          title: '小年糕',
+          descript: 'hello 小年糕',
+          time: '7-18 11:14'
+        },
+        {
+          icon: icon,
+          title: '小板凳',
+          descript: 'hello 小板凳',
+          time: '7-18 11:15',
+        },
+        {
+          icon: icon,
+          title: '小豆包',
+          descript: 'hi 小豆包',
+          time: '7-17 10:00',
+        }
+      ],
+      isDialogActive: false
+    }
+  }
+
+  onItemClick = (message) => {
+    console.log(message);
+  }
+
+
+
+  handleShowDialog = isActive => {
+    this.setState({ isDialogActive: isActive });
+  }
+
+
+  handleAddDialog = () => {
+    this.setState({ isDialogActive: DIALOG_SHOW_STATUS.SHOW_ADD_MESSAGE });
+  }
+
+
+  handleMoreDialog = ()=> {
+    this.setState({isDialogActive:DIALOG_SHOW_STATUS.SHOW_MORE_BTN });
+  }
+
+
+  renderTopViewList = ()=>{
+    return <TopView  ADD={this.handleAddDialog}/>
+  }
+
+  handleAddItem = item => {
+    const newMessages = this.state.messages.slice();
+    newMessages.unshift({
+      icon: icon,
+      ...item,
+    });
+    this.setState({
+      messages: newMessages,
+      isDialogActive: DIALOG_SHOW_STATUS.HIDE,
+    });
+  }
+
+
   render() {
     return (
-      <div className="App">
-        <div className="top">
-          <ul>
-            <li className="aw" >微信</li>
-            <li className="al">
-              <img src={icon7} alt="图片无法显示" />
-            </li>
-            <li className="al">
-              <img src={icon8} alt="图片无法显示" />
-            </li>
-          </ul>
-        </div>
-        <div className="content" onclick="getMessage[0]">
-          <ul>
-            <li onclick="getMessage(0)">
-              <img src={icon0} alt="图片未显示" />
-              <p className="ab" >张三</p>
-              <p className="ah">你好</p>
-              <p className="af">10:10</p>
-            </li>
-            <li onclick="getMessage(1)">
-              <img src={icon1} alt="图片未显示" />
-              <p className="ab">李四</p>
-              <p className="ah">去吃饭吗</p>
-              <p className="af">11:10</p>
-            </li>
-            <li onclick="getMessage(2)">
-              <img src={icon2} alt="图片未显示" />
-              <p className="ab" >王五</p>
-              <p className="ah">在哪呢</p>
-              <p className="af">12:10</p>
-            </li>
-          </ul>
-        </div>
-        <div className="bottom" >
-          <ul>
-            <li className="b">
-              <img src={icon3} alt="图片未显示" />
-              <p className="as">消息</p>
-            </li>
-            <li className="b">
-              <img src={icon4} alt="图片未显示" />
-              <p className="as">通讯录</p>
-            </li>
-            <li className="b">
-              <img src={icon5} alt="图片未显示" />
-              <p className="as">发现</p>
-            </li>
-            <li className="b">
-              <img src={icon6} alt="图片未显示" />
-              <p className="ag">我</p>
-            </li>
-          </ul>
-        </div>
+      <div>
+        {this.renderTopViewList() }
 
+        {
+          this.state.messages.map((item,i) => {
+            return <MessageItem item={item}  MORE={this.handleMoreDialog} />
+          }
+        )}
+        
+        <nav className="chat-nav">
+          <div className="chat-nav__item" onClick={this.handleAddItem}>
+            <img className="chat-nav__item__icon" src={icon} alt="" />
+            <div className="chat-nav__item__name">微信</div>
+          </div>
+          <div className="chat-nav__item">
+            <img className="chat-nav__item__icon" src={icon} alt="" />
+            <div className="chat-nav__item__name">通讯录</div>
+          </div>
+          <div className="chat-nav__item">
+            <img className="chat-nav__item__icon" src={icon} alt="" />
+            <div className="chat-nav__item__name">发现</div>
+          </div>
+          <div className="chat-nav__item" onClick={this.handleShowDialog.bind(this, true)}>
+            <img className="chat-nav__item__icon" src={icon} alt="" />
+            <div className="chat-nav__item__name">我</div>
+          </div>
+        </nav>
+
+
+        <DialogView
+          isActive={this.state.isDialogActive}
+          onCloseClick={this.handleShowDialog}
+          onAddItem={this.handleConfirmAddClick}
+          handleDeleteItem={this.handleDeleteItem}
+          handleSetToTop={this.handleSetToTop}
+          handleMultipleClick={this.handleMultipleClick}
+        />
       </div>
-
     );
   }
 }
