@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import './DialogView.css';
+import React  from 'react'
+import './DialogView.css'
 import { DIALOG_SHOW_STATUS } from '../const'
-import '../App.css';
-export default class DialogView extends Component {
+
+export default class DialogView extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -16,11 +16,13 @@ export default class DialogView extends Component {
     this.handleCloseDialog = this.handleCloseDialog.bind(this)
     this.handleConfirmAddClick = this.handleConfirmAddClick.bind(this)
   }
+
   handleTitleChange(event) {
     this.setState({
       title: event.target.value
     })
   }
+
   handleDescChange(event) {
     this.setState({
       descript: event.target.value
@@ -31,6 +33,11 @@ export default class DialogView extends Component {
     this.setState({
       time: event.target.value
     })
+  }
+
+  handleCloseDialog() {
+    const { onCloseClick } = this.props
+    onCloseClick && onCloseClick(false)
   }
 
   handleConfirmAddClick() {
@@ -46,11 +53,6 @@ export default class DialogView extends Component {
     })
   }
 
-  handleCloseDialog = () => {
-    this.props.onCloseClick(false);
-  }
-
-
   renderAddMessageView() {
     return (
       <div className="ViewContent">
@@ -63,11 +65,10 @@ export default class DialogView extends Component {
         <div>
           时间：<input onChange={this.handleTimeChange} />
         </div>
-        <button onClick={this.handleConfirmAddClick}>确认</button>
+        <div className="confirmBtn" onClick={this.handleConfirmAddClick}>确认</div>
       </div>
     )
   }
-
 
   renderMoreBtnView() {
     const { handleDeleteItem, handleSetToTop, handleMultipleClick } = this.props
@@ -85,6 +86,7 @@ export default class DialogView extends Component {
       <div className="closeBtn" onClick={this.handleCloseDialog}>Close</div>
     )
   }
+
   renderContent() {
     const { isActive } = this.props
     switch (isActive) {
@@ -98,19 +100,13 @@ export default class DialogView extends Component {
   }
 
   render() {
-
-    const { isActive } = this.props;
-
-    if (!isActive) {
-      return null;
-    }
+    const { isActive } = this.props
+    if (!isActive) { return null }
     return (
       <div className="DialogView">
         {this.renderCloseBtn()}
         {this.renderContent()}
-    
       </div>
-    );
+    )
   }
 }
-
