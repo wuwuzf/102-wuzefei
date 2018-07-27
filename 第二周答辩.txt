@@ -1,0 +1,36 @@
+store ：存放所有数据 分派dispatch
+
+reducer ：通过dispatch携带的action中的type来分类执行操作
+
+dispatch ：由mapDispatchToProps引入 用来携带由UI引起的变化的操作action
+
+action ：里面存放type 和 数据 通过dispatch 传到reducer 里进行操作并返回state 给容器再给子组件去渲染到页面
+
+mapStateToProps ：将state数据放到props中 容器再用props来使用这些数据
+
+mapDispatchToProps ：引入dispatch 
+
+
+redux的思想 ：两种情况 
+第一种：把初始state中的数据渲染到UI中  首先connect建立store与容器组件的联系（把两个函数拿到的state结合送给组件） 函数mapStateToProps把store中的state放在props中 容器可以通过this.props从store中拿到state，子组件在通过this.props从父容器中拿到state渲染到界面上。
+
+
+
+第二种：UI界面用户的操作引起的UI变化  举个例子 点击＋按钮显示dialog界面 当点击按钮后 组件需要获取store中的dialog的状态值 然后改变 ， 用ActionCreator创建了一个action通过diapatch(store分配，同过mapDisptchToProps函数引入）交给Store,Store借助Reducer通过type确认并处理了该State的状态，Reducer返回给Store一个结果，Store再把这个State转给组件。 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
