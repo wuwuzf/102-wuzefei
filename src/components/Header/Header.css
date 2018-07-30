@@ -1,0 +1,52 @@
+.header{
+    position: relative;
+    top:10px; 
+}
+.header_icon{
+    float: left;
+    padding: 5px;
+    
+    
+}
+.header_message{
+    flex: 1;
+    position: relative;
+}
+.header_top{
+    color: darkcyan;
+    float: left;
+}
+.header_bottom{
+    overflow: hidden;   
+}
+.header_one{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.header_tow{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.header_three{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;   
+}
+.tel{
+    display: inline;
+}
+.edit{
+    float: right;
+}
+.wechat{
+    display: inline;
+}
+.more{
+    display: inline;
+}
+.search1{
+    margin-left: 25px;
+}
+
