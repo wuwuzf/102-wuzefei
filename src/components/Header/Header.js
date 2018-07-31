@@ -15,10 +15,13 @@ export default class Headers extends Component{
     }
     render(){
         const {header_one,header_two,header_three,message } =this.props;
+       
         return(
+            
             <Layout style={{ background: '#eee'}} theme="white" className="header">
-                <Sider style={{ background: '#fff'}} className="header_icon">
-                    <img src={icon} alt=''/>
+                <Sider style={{ background: '#fff'}} >
+                    {/* <img src={icon} alt=''/> */}
+                    <img className="header_icon" src={message.hurl} />
                 </Sider>
                 <Layout  className="header_message">
                     <Header style={{ background: '#fff' }} className="header_top">
@@ -26,29 +29,24 @@ export default class Headers extends Component{
                     </Header>
                     <Layout  className="header_bottom">
                         <Sider style={{ background: '#fff' }} className="header_one">
-                            <div>学员编号:</div>
-                            <div>在学课程:</div>
-                            <div>入学时间:</div>
-                            {/* {this.props.header_one.map((item,idx)=>{
-                                return(
-                                    <div>{item.name}</div>
-                                );
-                            })} */}
+                            <div>学员编号: {message.nick}</div>
+                            <div>在学课程: {message.learningLesson}</div>
+                            <div>入学时间:{message.lastLoginDate}</div>
                         </Sider>
                         <Content style={{ background: '#fff' }}   className="header_tow">
                            <div>
-                            <div>历史付费额:</div>
-                            <div>累计学习天数:</div>
-                            <div>最后登录时间:</div>
+                            <div>历史付费额: {message.history_pay}</div>
+                            <div>累计学习天数:{message.totalearningDays}</div>
+                            <div>最后登录时间:{message.lastLoginDate}</div>
                            </div>
                         </Content>
                         <Sider style={{ background: '#fff' }} className="three">
                             <div >
-                                <div className="tel">手机号码:</div>
+                                <div className="tel">手机号码:{message.tel}</div>
                                 <Icon className="edit" type="edit" style={{ fontSize: 16, color: '#08c' }} />
                             </div>
                             <div >
-                                <div className="wechat">微信号码:</div>
+                                <div className="wechat">微信号码:{message[6]}</div>
                                 <Search className="search0"
                                     placeholder="input wechat"
                                     enterButton="提交"
@@ -58,7 +56,7 @@ export default class Headers extends Component{
                                 />
                             </div>
                             <div >
-                                <div className="more">备注:   </div>
+                                <div className="more">备注: {message[8]}  </div>
                                 <Search className="search1"
                                     placeholder="input beizhu"
                                     enterButton="提交"

@@ -14,3 +14,20 @@ export const setChatMultipleSelect = messages => ({
   type: ActionTypes.SET_CHAT_MULTIPLE_SELECT,
   messages,
 })
+
+
+
+
+// componentDidMount(){
+//   axios({
+//       method:'post',
+//       url:'',
+//       data:{
+//           ""
+//       }
+//   }).then(res =>{
+
+//   }).catch(err =>{
+      
+//   })
+// }

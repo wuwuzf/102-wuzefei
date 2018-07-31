@@ -7,17 +7,21 @@ import rootReducer from './reducers';
 import { createLogger } from 'redux-logger';
 
 
+
+
+
 const logger = createLogger(); 
 
 const store = createStore(
     rootReducer,
-    compose(
         applyMiddleware(logger),
-    )
 )
 
 class App extends Component {
+
+    
     render() {
+        console.log("hehehehehhehiiiiii")
         return (
             <Provider store={store}>
                 <Op />
