@@ -29,14 +29,14 @@ export default class Headers extends Component{
                     </Header>
                     <Layout  className="header_bottom">
                         <Sider style={{ background: '#fff' }} className="header_one">
-                            <div>学员编号: {message.nick}</div>
+                            <div>学员编号: {message.mid}</div>
                             <div>在学课程: {message.learningLesson}</div>
-                            <div>入学时间:{message.lastLoginDate}</div>
+                            <div>入学时间:{message.enterDate}</div>
                         </Sider>
                         <Content style={{ background: '#fff' }}   className="header_tow">
                            <div>
                             <div>历史付费额: {message.history_pay}</div>
-                            <div>累计学习天数:{message.totalearningDays}</div>
+                            <div>累计学习天数:{message.totalLearningDays}</div>
                             <div>最后登录时间:{message.lastLoginDate}</div>
                            </div>
                         </Content>
@@ -46,13 +46,13 @@ export default class Headers extends Component{
                                 <Icon className="edit" type="edit" style={{ fontSize: 16, color: '#08c' }} />
                             </div>
                             <div >
-                                <div className="wechat">微信号码:{message[6]}</div>
+                                <div className="wechat">微信号码:</div>
                                 <Search className="search0"
                                     placeholder="input wechat"
                                     enterButton="提交"
                                     size="small"
                                     style={{ width: '70%' }}
-                                    onSearch={value => console.log(value)}
+                                    value = {message.weiChatCode}
                                 />
                             </div>
                             <div >
@@ -62,6 +62,7 @@ export default class Headers extends Component{
                                     enterButton="提交"
                                     size="small"
                                     style={{ width: '70%' }}
+                                    value ={message.remark}
                                     onSearch={value => console.log(value)}
                                 />
                             </div>

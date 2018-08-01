@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore,applyMiddleware,compose } from 'redux'; 
 import rootReducer from './reducers';
 import { createLogger } from 'redux-logger';
+import serverApi from './middleware/serverApi';
 
 
 
@@ -14,7 +15,7 @@ const logger = createLogger();
 
 const store = createStore(
     rootReducer,
-        applyMiddleware(logger),
+        applyMiddleware(serverApi,logger)
 )
 
 class App extends Component {

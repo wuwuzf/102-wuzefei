@@ -2,11 +2,11 @@ import React,{Component} from 'react';
 import './Table.css'
 import { Icon } from '../../../node_modules/antd';
 function fun_render(text, type) {
-  if (type === 'percent') {
-    let num = parseInt(text);
-    if (num < 80) {
+  if (type === 'float') {
+    let num = text;
+    if (num < 0.80) {
       return <span className="red">{text}</span>
-    } else if (num > 95) {
+    } else if (num > 0.95) {
       return <span className="orange">{text}</span>
     } else {
       return <span>{text}</span>
@@ -63,7 +63,7 @@ export const columns =[{
     key: 'enterRate',
     render:text =>{
       return(
-        fun_render(text, 'percent')
+        fun_render(text, 'fraction')
       )
   }
   },{
@@ -73,7 +73,7 @@ export const columns =[{
 
     render:text =>{
             return(
-              fun_render(text, 'percent')
+              fun_render(text, 'float')
             )
         }
   },{
@@ -82,7 +82,7 @@ export const columns =[{
     key: 'beCommenttedRate',
     render:text =>{
       return(
-        fun_render(text, 'percent')
+        fun_render(text, 'float')
       )
   }
   },{
@@ -91,7 +91,7 @@ export const columns =[{
     key: 'signRate',
     render:text =>{
       return(
-        fun_render(text, 'percent')
+        fun_render(text, 'fraction')
       )
   }
   },{
@@ -100,7 +100,7 @@ export const columns =[{
     key: 'satisfyRate',
     render:text =>{
       return(
-        fun_render(text, 'percent')
+        fun_render(text, 'float')
       )
   }
   },

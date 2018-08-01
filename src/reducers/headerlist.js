@@ -11,7 +11,9 @@ const initstate={
 //     '2018-03-30',
 //     '1321234313'
 // ]
-  message:[]
+  message:{
+      hurl:""
+  }
 }
 
 
@@ -19,7 +21,8 @@ const initstate={
 export default function headerlist(state = initstate,action){
     switch(action.type){
         case ActionTypes.FETCH_USERINFO_SUC:
-        let message = action.data;
+        console.log("data is here ",action)
+        const message = action.response.data;
         return Object.assign({}, state, { message })
         default:
         return state;
