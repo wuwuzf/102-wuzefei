@@ -80,18 +80,23 @@ import * as api from '../api';
 
 const initstate = {
   LessonsList: [],
-  historyLessonsList: []
+  historyLessonsList: [],
+  satisfiledlist:[]
 }
 
 export default function tablelist(state = initstate, action) {
   switch (action.type) {
     case ActionTypes.FETCH_LESSONINFO_SUC:
-      console.log("这里",action)
+     
       const LessonsList = action.response.data.currentLessonsList;
       const historyLessonsList = action.response.data.historyLessonsList;
-
-      return Object.assign({}, state, { LessonsList, historyLessonsList:historyLessonsList })
+      return Object.assign({}, state, { LessonsList, historyLessonsList:historyLessonsList})
+    case ActionTypes.FETCH_SATISFILEDLIST_SUC:
+      console.log("这里PPPPP",action)
+      const satisfiledlist = action.response.data.list;
+      return Object.assign({}, state, { satisfiledlist })
     default:
+      console.log("lalalal default")
       return state;
   }
 } 

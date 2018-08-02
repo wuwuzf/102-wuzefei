@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import './Table.css'
 import { Icon } from '../../../node_modules/antd';
+// import { Link } from 'react-router'
 function fun_render(text, type) {
   if (type === 'float') {
     let num = text;
@@ -27,7 +28,7 @@ function fun_render(text, type) {
 }
 
 
-export const columns =[{
+export const columns1 =[{
     title: '班级',
     dataIndex: 'classInfo',
     key: 'classInfo',   
@@ -36,6 +37,7 @@ export const columns =[{
         <div>
            <Icon type="exclamation-circle" />
            <span>{text.name}</span>
+           {/* <Link  to="/classinfo">{text}</Link> */}
         </div>
       )}
   }, {
@@ -53,7 +55,7 @@ export const columns =[{
     render:text =>{
       return(
         <div >
-           <Icon type="user" />
+           <Icon onClick="handleShowTeacherInfo" type="user" />
            <span>{text.nick}</span>
         </div>
       )}
@@ -105,3 +107,54 @@ export const columns =[{
   }
   },
 ]
+
+
+
+export const columns2 =[{
+    title: '教程',
+    dataIndex: 'course_name',
+    key: 'course_name'
+  },{
+    title: '开课时间',
+    dataIndex: 'time',
+    key: 'time'
+  },{
+    title: '老师',
+    dataIndex: 'teacher_info',
+    key: 'teacher_info',
+    render:text =>{
+      return(
+        <div >
+           <Icon onClick="handleShowTeacherInfo" type="user" />
+           <span>{text.nick}</span>
+        </div>
+      )}
+  },{
+    title: '满意度评分',
+    dataIndex: 'satisfied_score',
+    key: 'satisfied_score'
+  },{
+    title: '具体反馈',
+    dataIndex: 'satisfied_detail',
+    key: 'classInfo'
+  },{
+    title: '操作',
+    dataIndex: 'reply_status',
+    key: 'reply_status',
+    render :(text) =>{
+      if (text ==1 ){
+        return (
+      
+        <span className="setstate">已回复</span>
+      )}
+      else {
+        return (
+          <div>
+            <Icon type="mail" />
+            <span className="setstate" >待回复</span>
+          </div>
+        )}
+    }
+  }]         
+
+

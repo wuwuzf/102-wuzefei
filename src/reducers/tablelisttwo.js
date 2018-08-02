@@ -2,10 +2,10 @@ import * as ActionTypes from '../const/actionTypes'
 
 
 const initstate = {
-    studentList:{}
+    studentList:[]
   }
   
-  export default function tablelistthree(state = initstate, action) {
+  export default function tablelisttwo(state = initstate, action) {
     switch (action.type) {
      
       case ActionTypes.FETCH_STUDENTLIST_SUC:

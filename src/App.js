@@ -1,34 +1,27 @@
-import React, { Component } from 'react';
-import Op from './container/Op'
-import 'antd/dist/antd.css';
-import { Provider } from 'react-redux';
-import { createStore,applyMiddleware,compose } from 'redux'; 
-import rootReducer from './reducers';
-import { createLogger } from 'redux-logger';
-import serverApi from './middleware/serverApi';
+import React from 'react';
+import { connect } from 'react-redux'
 
+class App extends React.Component {
+  constructor(props){
+    super(props);
+  }
 
-
-
-
-const logger = createLogger(); 
-
-const store = createStore(
-    rootReducer,
-        applyMiddleware(serverApi,logger)
-)
-
-class App extends Component {
-
-    
-    render() {
-        console.log("hehehehehhehiiiiii")
-        return (
-            <Provider store={store}>
-                <Op />
-            </Provider>
-        );
-    }
+  render() {
+    const { children } = this.props
+    return (
+      <div>
+        {children}
+      </div>
+    );
+  }
 }
 
-export default App;
+function mapStateToProps(state) {
+  const { message, showDialog } = state
+  return {
+    ...message,
+    ...showDialog,
+  }
+}
+
+export default connect(mapStateToProps)(App);
