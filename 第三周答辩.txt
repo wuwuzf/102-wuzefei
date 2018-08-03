@@ -1,0 +1,11 @@
+
+axios： 拦截请求和响应 用链接从服务器获取数据 并根据获取的状态将相应的数据转出去
+
+
+中间件的用法：使用编写好的中间件作用在action和reducer中间 将它写入applyMiddleware方法中，再传入creatStore方法 中间件的次序在applyMiddleware中体现
+
+
+异步操作：从服务器获取数据时采用异步操作，为了防止等待或操作受阻 有三种action
+
+
+整个过程是 发出action后 到action中返回对应得函数 然后到中间件中进行处理，中间件将处理的结果返回到reducer中将获取到的state给到组件中去渲染。
