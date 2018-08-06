@@ -3,7 +3,7 @@
 }
 .button_left{
     float: left;
-    padding:10px;
+  
 }
 .button_a{
     background-color: darkgrey;
@@ -11,5 +11,5 @@
 }
 .button_right{
     float: right;
-    margin: 10px;
+    overflow: hidden;
 }

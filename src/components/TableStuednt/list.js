@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-// import { Link } from 'react-router'
+import { Link } from 'react-router'
 import './list.css'
 export const columns =[{
   title: '图片',
@@ -16,19 +16,16 @@ export const columns =[{
     title: '学员名',
     dataIndex: 'nick',
     key: 'nick',   
-    render:(text) =>{
-      return(
-      // <Link  to="/student">{text}</Link>
-      <div>{text}</div>
-      )
-    }
   }, {
     title: '学员编号',
     dataIndex: 'mid',
     key: 'mid',
-  },
-  
-  {
+    render:(text) =>{
+      return(
+      <Link  to={`/op/${text}`}>{text}</Link>
+      )
+    }
+  },{
     title: '入学时间',
     dataIndex: 'enter_time',
     key: 'enter_time',

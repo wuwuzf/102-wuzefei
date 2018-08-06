@@ -1,10 +1,13 @@
 import { combineReducers } from 'redux'
-import message from './message';
-import showDialog from './showDialog';
+import tablelist from '../reducers/tablelist'
+import headerlist from '../reducers/headerlist'
+import tablelisttwo from '../reducers/tablelisttwo'
+import tablelistthree from '../reducers/tablelistthree'
 
-const index = combineReducers({
-  message,
-  showDialog
-})
 
-export default index
+export default combineReducers({
+    tablelist,
+    headerlist,
+    tablelisttwo,
+    tablelistthree
+});

@@ -16,7 +16,7 @@ export default class Tables extends Component{
             <div>
                 <div>
                     <div className="word0">在学课程</div>
-                    <div><Table columns={columns} dataSource={data} /></div>
+                    <div ><Table columns={columns} dataSource={data} /></div>
                 </div>
                 <div>
                     <div className='word1'>历史数据</div>

@@ -10,9 +10,9 @@ import TableClass from '../components/TableClass/Table'
 class ClassInfo extends Component {
 
     componentDidMount() {
-        const { Actions } = this.props;
+        const { Actions,params } = this.props;
         console.log("班级")
-        const id = 2;
+        const id=params.id;
         Actions.fetchclassinfo(id);
     }
 

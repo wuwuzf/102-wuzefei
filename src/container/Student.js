@@ -4,17 +4,17 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../actions';
 
-import Buttontwo from '../components/Button/Button.js'
+
 import TableStudenet from '../components/TableStuednt/Table'
 
 
 class Student extends Component {
 
     componentDidMount() {
-        const { Actions } = this.props;
+        const { Actions} = this.props;
         console.log("lalalall")
-        const id = 2;
-        Actions.fetchstudentlist (id);
+
+        Actions.fetchstudentlist ();
     }
 
 
@@ -29,7 +29,7 @@ class Student extends Component {
         return (
 
             <div>
-                <Buttontwo />
+              
                 <TableStudenet  studentList={this.props.tablelisttwo.studentList} />
             </div>
         )

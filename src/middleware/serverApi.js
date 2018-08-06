@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { normalize } from '../../node_modules/normalizr';
 
 const API_DOMAIN = 'http://xly-wkop.xiaoniangao.cn';
 
-const callServerApi = (endpoint, params) => {
+const callServerApi = (endpoint, params,normalizeFuc) => {
   return new Promise((resolve, reject) => {
     axios({
       method: 'POST',
@@ -13,7 +14,8 @@ const callServerApi = (endpoint, params) => {
       data: params
     }).then(res => {
       if (res.data.ret === 1) {
-        return resolve(res);
+        // return resolve(res);
+        return resolve(normalizeFuc ? normalizeFuc(res) : res);
       }
       return reject({ errMsg: res.data.errMsg });
     }).catch(err => {
@@ -29,7 +31,8 @@ export default store => next => action => {
   const {
     type,
     endpoint,
-    params
+    params,
+    normalizeFuc
   } = action.SERVER_API;
 
   if (typeof type !== 'string') {
@@ -46,7 +49,7 @@ export default store => next => action => {
     type: `${type}_REQ`
   });
 
-  return callServerApi(endpoint, params)
+  return callServerApi(endpoint, params,normalizeFuc)
     .then(res => {
       console.log(res)
       next({

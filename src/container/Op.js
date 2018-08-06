@@ -14,11 +14,10 @@ import * as actionCreators from '../actions';
 class Op extends Component {
 
     componentDidMount() {
-        const { Actions } = this.props;
+        const { Actions ,params} = this.props;
         console.log(this.p)
-        console.log("lalalall")
-        const mid = 1;
-        // const id = 2;
+        console.log(params.mid)
+        const mid=params.mid; 
         Actions.fetchUserInfo(mid);
         Actions.fetchLessonInfo(mid);
         Actions.fetchsatisfiledlist(mid);

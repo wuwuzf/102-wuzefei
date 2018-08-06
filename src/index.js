@@ -1,40 +1,53 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
+
 import { createStore, applyMiddleware } from 'redux'
 import { createLogger } from 'redux-logger'
 import { Provider } from 'react-redux'
 import { Router, Route, IndexRedirect, browserHistory, IndexLink } from 'react-router'
-import index from './reducers/index'
-import './index.css'
-import App from './App'
-import AddMessage from './containers/AddMessage'
-import WeChatMessage from './containers/WeChatMessage'
-import registerServiceWorker from './registerServiceWorker'
+// import index from './reducers/index'
+import rootReducer from './reducers';
+import serverApi from './middleware/serverApi';
 
-const logger = createLogger();
-const store = createStore(index, applyMiddleware(logger));
 
-// const routes = <Route path="/" component={App}>
-//   <IndexRedirect to="/weChat" />
-//   <Route path="weChat" component={WeChatMessage}/>
-//   <Route path="addMessage" component={AddMessage}/>
-// </Route>
+import Op from './container/Op'
+import Student from './container/Student'
+import ClassInfo from './container/Class'
+
+const logger = createLogger(); 
+
+const store = createStore(
+    rootReducer,
+    applyMiddleware(serverApi,logger)
+)
+
+
 
 const routes = [{
-  path: '/',
-  component: App,
-  indexRoute: { component: WeChatMessage },
-  childRoutes: [
-    { path: 'weChat', component: WeChatMessage },
-    { path: 'addMessage', component: AddMessage }
-  ]
+    path:'/',
+    component:App,
+    indexRoute:{ component: Student },
+    childRoutes:[
+        { path:'op/:mid', component:Op},
+        { path: 'classinfo/:id', component: ClassInfo },
+        { path: 'student', component:Student}
+    ]
+
 }]
 
+
+
+
+console.log("kkkkkkkkkkkkkkk")
+
 ReactDOM.render(
-  <Provider store={store}>
-    <Router routes={routes} history={browserHistory}/>
-    {/*<WeChatMessage />*/}
-  </Provider>,
-  document.getElementById('root')
-);
+    <Provider store={store}>
+        <Router routes={routes} history={browserHistory} />
+
+    </Provider>,
+    // <App />, 
+    document.getElementById('root'));
 registerServiceWorker();
