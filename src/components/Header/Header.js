@@ -14,7 +14,7 @@ export default class Headers extends Component{
         super();
     }
     render(){
-        const {header_one,header_two,header_three,message } =this.props;
+        const { message } =this.props;
        
         return(
             

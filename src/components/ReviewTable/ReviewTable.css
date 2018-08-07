@@ -1,0 +1,19 @@
+/* .card-container{
+    overflow: hidden;
+    
+} */
+.table{
+    margin: 80px;
+    overflow: hidden;
+    position: absolute;
+    /* top:60px; */
+}
+.box{
+    border: 3px;
+    border-style: groove;
+    display: flex;
+}
+.box1{
+    border: 3px;
+    border-style: groove;
+}

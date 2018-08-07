@@ -16,7 +16,7 @@ import serverApi from './middleware/serverApi';
 import Op from './container/Op'
 import Student from './container/Student'
 import ClassInfo from './container/Class'
-
+import Review from './container/Review'
 const logger = createLogger(); 
 
 const store = createStore(
@@ -29,11 +29,11 @@ const store = createStore(
 const routes = [{
     path:'/',
     component:App,
-    indexRoute:{ component: Student },
+    indexRoute:{ component: Review },
     childRoutes:[
-        { path:'op/:mid', component:Op},
-        { path: 'classinfo/:id', component: ClassInfo },
-        { path: 'student', component:Student}
+        // { path:'op/:mid', component:Op},
+        // { path: 'classinfo/:id', component: ClassInfo },
+        // { path: 'student', component:Student}
     ]
 
 }]

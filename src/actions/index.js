@@ -74,7 +74,17 @@ export function fetchsatisfiledlist(mid) {
   }
 }
 
-
+export function fetchhomework(mid) {
+  return {
+    SERVER_API: {
+      type: ActionTypes.FETCH_HOMEWORK,
+      endpoint: '/getHomeWork',
+      params: {
+        mid
+      }
+    }
+  }
+}
 
 // componentDidMount(){
 //   axios({

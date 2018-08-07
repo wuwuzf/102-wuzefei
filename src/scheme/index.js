@@ -1,14 +1,17 @@
-import { schema } from 'normalizr';
+import lessonListSchema from './lessons'
 
 
- const lessonSchema = new  schema.Entity('lesson' , {}, { idAttribute : 'id' })
- const lessonListSchema = new schema.Array(lessonSchema);
 
 
- export default {
-     lessonListSchema
- };
 
+
+const Schema = {
+    lessonListSchema,
+}
+
+
+
+export default Schema;
 
 
  
