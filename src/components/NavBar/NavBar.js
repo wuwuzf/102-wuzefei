@@ -21,7 +21,7 @@ const TabPane = Tabs.TabPane;
               <Tabs className="navbar" >
                 <TabPane tab="课程信息" key="1">
                    <Buttons />
-                   <Table1 data={this.props.LessonsList} data1={this.props.historyLessonsList} columns={columns1} />
+                   <Table1 data={this.props.currentLessonsList} data1={this.props.historyLessonsList} columns={columns1} />
                 </TabPane>
                 <TabPane tab="满意度反馈" key="2">
                     <Table dataSource = {this.props.satisfiledlist}  columns = {columns2} />
@@ -33,10 +33,21 @@ const TabPane = Tabs.TabPane;
 }
 
 function mapStateToProps(state){
-    const {LessonsListIds,historyLessonsListIds,lessonEntities,satisfiledlist} = state.tablelist;
-    const LessonsList = LessonsListIds.map(id => LessonsListIds.lessonEntities[id]);
-    const historyLessonsList = historyLessonsListIds.map(id => historyLessonsListIds.lessonEntities[id]);
-    return {LessonsList,historyLessonsList,satisfiledlist}
+    const {
+        tablelist:{
+        currentLessonsListIds,
+        historyLessonsListIds,
+        satisfiledlistIds
+    },
+        entities:{
+            lessons,
+            satisfied
+        }
+     } = state;
+    const currentLessonsList = currentLessonsListIds.map(id => lessons[id]);
+    const historyLessonsList = historyLessonsListIds.map(id => lessons[id]);
+    const satisfiledlist = satisfiledlistIds.map(id => satisfied[id]);
+    return {currentLessonsList,historyLessonsList,satisfiledlist}
   }
   
   

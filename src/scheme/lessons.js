@@ -9,6 +9,6 @@ const lessonSchema = new schema.Entity('lesson',{
 },{ idAttribute:'id' })
 
 
-const lessonListSchema = [lessonSchema];
+const lessonListSchema = [ lessonSchema ];
 
 export default lessonListSchema;

@@ -31,9 +31,10 @@ const routes = [{
     component:App,
     indexRoute:{ component: Review },
     childRoutes:[
-        // { path:'op/:mid', component:Op},
-        // { path: 'classinfo/:id', component: ClassInfo },
-        // { path: 'student', component:Student}
+        { path:'op/:mid', component:Op},
+        { path: 'classinfo/:id', component: ClassInfo },
+        { path: 'student', component:Student},
+        { path: 'review' , component:Review}
     ]
 
 }]

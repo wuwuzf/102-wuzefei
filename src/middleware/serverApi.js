@@ -15,10 +15,13 @@ const callServerApi = (endpoint, params,normalizeFuc) => {
     }).then(res => {
       if (res.data.ret === 1) {
         // return resolve(res);
-        return resolve(normalizeFuc ? normalizeFuc(res) : res);
+        console.error(res);
+        return resolve(normalizeFuc ? normalizeFuc(res.data.data) : res);
       }
-      return reject({ errMsg: res.data.errMsg });
+      console.error('ret 出错',res.data)
+      return reject({ errMsg: res.data });
     }).catch(err => {
+      console.error('请求 出错',err)
       return reject({ errMsg: JSON.stringify(err) });
     });
   });
@@ -54,12 +57,13 @@ export default store => next => action => {
       console.log(res)
       next({
         type: `${type}_SUC`,
-        response: res.data
+        response: res
       });
     }).catch(err => {
+
       next({
         type: `${type}_FAI`,
-        errMsg: err.errMsg
+        errMsg: err
       });
     });
 };

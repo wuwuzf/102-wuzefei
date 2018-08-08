@@ -24,10 +24,17 @@ export function fetchLessonInfo(mid) {
       params: {
         mid
       },
-      normalizeFuc: json =>{
+      normalizeFuc: json => {
+        console.log("json ", json)
+        console.log()
+        const { currentLessonsList: cur, historyLessonsList: his} = json;
+        const currentLessonsList = normalize(cur, Schema.lessonListSchema);
+        const historyLessonsList = normalize(his, Schema.lessonListSchema);
+        console.log("lessons ", json.currentLessonsList)
+
         return {
-          current: normalize(json.currentlessonList,Schema.lessonListSchema),
-          history: normalize(json.historyLessonsList, Schema.lessonListSchema)
+          currentLessonsList,
+          historyLessonsList
         }
       }
     }
@@ -69,44 +76,40 @@ export function fetchsatisfiledlist(mid) {
       endpoint: '/getSatisfiledList',
       params: {
         mid
+      },
+      normalizeFuc: json => {
+        const satisfiedList = normalize(json.list, Schema.satisfiedListSchema);
+        return satisfiedList;
       }
     }
   }
 }
 
-export function fetchhomework(mid) {
+export function fetchhomework(rules) {
+  const { token, isReviewed } = rules;
+    let type = '';
+    if (token && !isReviewed) {
+        type = ActionTypes.FETCH_HOMEWORK_MYUNREVIEW;
+    } else if (token && isReviewed) {
+        type =  ActionTypes.FETCH_HOMEWORK_MYREVIEWED;
+    } else if (!token && !isReviewed) {
+        type =  ActionTypes.FETCH_HOMEWORK_ALLUNREVIEW;
+    } else {
+        type = ActionTypes.FETCH_HOMEWORK_ALLREVIEWED;
+    }
   return {
     SERVER_API: {
-      type: ActionTypes.FETCH_HOMEWORK,
+      type,
       endpoint: '/getHomeWork',
       params: {
-        mid
+        rules
+      },
+      normalizeFuc: json => {
+        // debugger
+        const homework = normalize(json, Schema.homeworksSchema);
+        return homework;
       }
     }
   }
 }
 
-// componentDidMount(){
-//   axios({
-//       method:'post',
-//       url:'',
-//       data:{
-//           ""
-//       }
-//   }).then(res =>{
-
-//   }).catch(err =>{
-      
-//   })
-// }
-
-
-
-// SERVER_API :{
-//   type :ActionTypes.FEACH_LESSON_INFO,
-//   url:''
-//   param:{
-//     mid
-//   }
-
-// }
