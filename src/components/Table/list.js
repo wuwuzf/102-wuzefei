@@ -3,6 +3,7 @@ import './Table.css'
 import { Icon } from '../../../node_modules/antd';
 import { Link } from 'react-router'
 import { Popover, Button } from 'antd';
+import Item from '../../../node_modules/antd/lib/list/Item';
 function fun_render(text, type) {
   if (type === 'float') {
     let num = text;
@@ -192,5 +193,6 @@ export const columns2 =[{
         )}
     }
   }]         
+
 
 

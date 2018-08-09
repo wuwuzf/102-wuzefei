@@ -16,7 +16,12 @@ import ReviewTabs from '../components/ReviewTabs/ReviewTabs.js'
                     {/* <ReviewSearch /> */}
                 </div>
                 <div >
-                    <ReviewTabs  Actions={this.props.Actions} />
+                    <ReviewTabs  Actions={this.props.Actions}
+                     myunreview={this.props.myunreview}
+                      myreviewed={this.props.myreviewed} 
+                      allunreview={this.props.allunreview} 
+                      allreviewed={this.props.allreviewed}
+                      />
                 </div>
             </div>
         )

@@ -1,22 +1,52 @@
 .ant-carousel .slick-slide {
     text-align: center;
-    height: 160px;
+    height: 360px;
     line-height: 160px;
-    background: #364d79;
+    /* background: #364d79; */
     overflow: hidden;
   }
   
   .ant-carousel .slick-slide h3 {
     color: #fff;
   }
-.item{
-    display: flex;
+  .item{
+    /* max-height: 510px; */
+    border: 1px solid #eee;
+    margin: 20px ;
+  }
+.item-left{
+    
+     /* float: left; */
+    /* width: 40%;  */
+    /* width: 500px; */
+    /* height: 400px; */
 }
-  .workinfo{
+.item-right{
+    /* width: 60%; */
+    float: left;
+   
+
+}
+.photo{
+    width: 40%;
+    float: left;
+    height: 400px;
+}
+ .workinfo{
       display: flex;
       width: 100%;
   }
 
   .switch1{
       float: right;
+  }
+
+  .left{
+      float: left;
+      width: 10%;
+
+  }
+  .right{
+      float: left;
+      width: 30%
   }

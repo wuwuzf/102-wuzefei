@@ -1,0 +1,48 @@
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .6);
+    transition: opacity .3s ease-in;
+  }
+  
+  .showMask {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .hideMask {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  .title {
+    background-color: #fff;
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #a1a1a1;
+  }
+
+  .btn {
+  background-color: #fff;
+  display: flex
+}
+
+.left{
+    float: left;
+    width: 50%;
+}
+.right{
+    float: right;
+}
+
+.dialog{
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    width: 300px;
+    height: 400px;
+}

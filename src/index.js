@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-
 import { createStore, applyMiddleware } from 'redux'
 import { createLogger } from 'redux-logger'
 import { Provider } from 'react-redux'
@@ -17,6 +16,9 @@ import Op from './container/Op'
 import Student from './container/Student'
 import ClassInfo from './container/Class'
 import Review from './container/Review'
+import ActionSheet from './container/ActionSheet'
+import Dialog from './container/Dialog'
+import Progress from './container/Progress'
 const logger = createLogger(); 
 
 const store = createStore(
@@ -29,12 +31,14 @@ const store = createStore(
 const routes = [{
     path:'/',
     component:App,
-    indexRoute:{ component: Review },
+    indexRoute:{ component: ActionSheet },
     childRoutes:[
         { path:'op/:mid', component:Op},
         { path: 'classinfo/:id', component: ClassInfo },
         { path: 'student', component:Student},
-        { path: 'review' , component:Review}
+        { path: 'review' , component:Review},
+        { path: 'Dialog' , component:Dialog},
+        { path: 'Progress' , component:Progress}
     ]
 
 }]

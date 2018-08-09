@@ -13,7 +13,7 @@ componentDidMount() {
             <div>
                 <List
                     bordered
-                    dataSource={123}
+                    dataSource={data}
                     renderItem={item => 
                         <ReviewItem 
                         Actions={Actions}
