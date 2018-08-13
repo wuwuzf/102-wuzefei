@@ -19,6 +19,7 @@ import Review from './container/Review'
 import ActionSheet from './container/ActionSheet'
 import Dialog from './container/Dialog'
 import Progress from './container/Progress'
+import Purview from './container/Purview'
 const logger = createLogger(); 
 
 const store = createStore(
@@ -31,14 +32,16 @@ const store = createStore(
 const routes = [{
     path:'/',
     component:App,
-    indexRoute:{ component: ActionSheet },
+    indexRoute:{ component: Purview },
     childRoutes:[
         { path:'op/:mid', component:Op},
         { path: 'classinfo/:id', component: ClassInfo },
         { path: 'student', component:Student},
         { path: 'review' , component:Review},
         { path: 'Dialog' , component:Dialog},
-        { path: 'Progress' , component:Progress}
+        { path: 'Progress' , component:Progress},
+        { path: 'ActionSheet' ,component:ActionSheet},
+        { path: 'Purview' , component:Purview}
     ]
 
 }]

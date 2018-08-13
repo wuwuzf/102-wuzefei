@@ -13,6 +13,10 @@
     height: 10px;
     background-color: darkgray
 }
+.green{
+    background-color: green;
+    height: 100%;
+}
 .bnt{
     position: absolute;
     top:30%;

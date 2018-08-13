@@ -1,0 +1,24 @@
+.page{
+    margin-top:100px;
+}
+.x{
+    float: right;
+}
+.dec{
+    /* border: 1px solid #000000 */
+    margin-top: 10px;
+}
+.top{
+    display: flex;
+    margin-top: 20px;
+}
+.left{
+    float: left;
+}
+.right{
+    display: flex;
+    float: right;
+}
+.bottom{
+    float: right;
+}

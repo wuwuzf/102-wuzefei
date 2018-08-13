@@ -113,3 +113,16 @@ export function fetchhomework(rules) {
   }
 }
 
+export function fetchdecinfo(mid) {
+  return {
+    type: ActionTypes.FETCH_PURVIEW_DEC,
+    mid
+  }
+}
+
+export function fetchaddinfo(mid) {
+  return {
+    type:ActionTypes.FETCH_PURVIEW_ADD,
+    mid
+  }
+}

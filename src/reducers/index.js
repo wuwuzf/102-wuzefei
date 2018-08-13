@@ -5,11 +5,13 @@ import tablelisttwo from '../reducers/tablelisttwo'
 import tablelistthree from '../reducers/tablelistthree'
 import tablereview from '../reducers/tablereview'
 import entities from '../reducers/entities'
+import purview from '../reducers/purview'
 export default combineReducers({
     tablelist,
     headerlist,
     tablelisttwo,
     tablelistthree,
     tablereview,
-    entities
+    entities,
+    purview
 });
