@@ -1,3 +1,4 @@
 .aabc{
-    float: right;
+    /* float: right; */
+   display: block;
 }

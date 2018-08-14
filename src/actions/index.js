@@ -113,13 +113,18 @@ export function fetchhomework(rules) {
   }
 }
 
-export function fetchdecinfo(mid) {
+export function fetchdelinfo(mid) {
   return {
-    type: ActionTypes.FETCH_PURVIEW_DEC,
+    type: ActionTypes.FETCH_PURVIEW_DEL,
     mid
   }
 }
-
+export function fetchshowinfo(id) {
+  return {
+    type:ActionTypes.FETCH_PURVIEW_SHOW,
+    id
+  }
+}
 export function fetchaddinfo(mid) {
   return {
     type:ActionTypes.FETCH_PURVIEW_ADD,
